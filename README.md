@@ -55,6 +55,10 @@ Orientando el desarrollo hacia un enfoque seguro, la aplicación cuenta con las 
 * Entorno y DevOps: Docker, Docker Compose, Linux Bash scripting (dev_build_container.sh).
 
 
+---
 
+## 📺 Demostración Funcional
+
+A continuación se incluye una breve demostración en vídeo donde se puede observar la interfaz de usuario en acción, el sistema de navegación dinámico y el comportamiento de la plataforma en un entorno local optimizado con Docker:
 
 https://github.com/user-attachments/assets/9d300841-50b1-44b3-b344-81834d78c541
