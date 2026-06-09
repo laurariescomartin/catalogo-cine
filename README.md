@@ -1,8 +1,5 @@
 
 
-https://github.com/user-attachments/assets/9d300841-50b1-44b3-b344-81834d78c541
-
-
 
 # Plataforma de Gestión Cinematográfica Modular (UGR)
 
@@ -56,3 +53,8 @@ Orientando el desarrollo hacia un enfoque seguro, la aplicación cuenta con las 
 * Frontend: JavaScript nativo (Vanilla JS), AJAX (Peticiones asíncronas), Twig Template Engine, CSS3.
 * Persistencia: MySQL (Triggers, restricciones de integridad referencial, hashes criptográficos).
 * Entorno y DevOps: Docker, Docker Compose, Linux Bash scripting (dev_build_container.sh).
+
+
+
+
+https://github.com/user-attachments/assets/9d300841-50b1-44b3-b344-81834d78c541
