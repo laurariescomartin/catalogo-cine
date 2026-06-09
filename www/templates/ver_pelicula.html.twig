@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>{{ pelicula.titulo }}</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/estilos_comentarios.css" />
+</head>
+<body>
+
+    <!-- Información de la película -->
+    <div class="pelicula">
+        <h1>
+          {% if query %}
+            {{ pelicula.titulo|replace({ (query): '<mark>' ~ query ~ '</mark>' })|raw }}
+          {% else %}
+            {{ pelicula.titulo }}
+          {% endif %}
+        </h1>
+
+        {% if pelicula.imagen is defined and pelicula.imagen %}
+            <img src="/imagenes/{{ pelicula.imagen }}" alt="Imagen de {{ pelicula.titulo }}" style="max-width:300px;" />
+        {% endif %}
+
+        {% if pelicula.descripcion is defined and pelicula.descripcion %}
+            <p><strong>Sinopsis:</strong>
+                {% if query %}
+                    {{ pelicula.descripcion|replace({ (query): '<mark>' ~ query ~ '</mark>' })|raw }}
+                {% else %}
+                    {{ pelicula.descripcion }}
+                {% endif %}
+            </p>
+        {% endif %}
+        
+        {% if hashtags is defined and hashtags|length > 0 %}
+            <p><strong>Hashtags:</strong>
+                {% for hashtag in hashtags %}
+                    {% if query %}
+                        {{ ('#' ~ hashtag.nombre)|replace({ (query): '<mark>' ~ query ~ '</mark>' })|raw }}
+                    {% else %}
+                        #{{ hashtag.nombre }}
+                    {% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
+    </div>
+
+    <hr />
+
+    <!-- Comentarios -->
+    <div class="comentarios">
+      <h2>Comentarios</h2>
+      {% for comentario in comentarios %}
+        <div class="comentario">
+          <p><strong>{{ comentario.nombre_usuario }}</strong> ({{ comentario.fecha }}):</p>
+          <p>
+            {% if query %}
+              {{ comentario.comentario|replace({ (query): '<mark>' ~ query ~ '</mark>' })|raw }}
+            {% else %}
+              {{ comentario.comentario }}
+            {% endif %}
+            {% if comentario.editado_por_moderador %}
+              <em>(Editado por moderador)</em>
+            {% endif %}
+          </p>
+
+          {% if rol == 'moderador' %}
+            <a href="editar_comentario.php?id={{ comentario.id }}">Editar</a> |
+            <a href="borrar_comentario.php?id={{ comentario.id }}" onclick="return confirm('¿Seguro que quieres borrar este comentario?')">Eliminar</a>
+          {% endif %}
+        </div>
+      {% else %}
+        <!-- Comentarios predeterminados -->
+        <div class="comentario">
+            <p><strong>Lucía García:</strong> ¡Me encantó esta peli!</p>
+            <small>Fecha: 2025-04-15 10:30</small>
+        </div>
+        <div class="comentario">
+            <p><strong>Carlos Ruiz:</strong> Buen reparto y gran dirección.</p>
+            <small>Fecha: 2025-04-18 19:45</small>
+        </div>
+      {% endfor %}
+    </div>
+    
+    <a href="portada.php">Atrás</a>
+
+</body>
+</html>

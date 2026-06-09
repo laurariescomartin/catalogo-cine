@@ -1,0 +1,32 @@
+<h1>Gestión de usuarios</h1>
+
+<table>
+  <tr><th>Nombre</th><th>Email</th><th>Rol</th><th>Acciones</th></tr>
+  {% for u in usuarios %}
+    <tr>
+      <td>{{ u.nombre }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.rol }}</td>
+      <td>
+        {% if u.id != mi_id %}
+          <form method="post" action="cambiar_rol.php" style="display:inline;">
+            <input type="hidden" name="id" value="{{ u.id }}">
+            <select name="nuevo_rol">
+              <option value="normal" {% if u.rol == 'normal' %}selected{% endif %}>Normal</option>
+              <option value="moderador" {% if u.rol == 'moderador' %}selected{% endif %}>Moderador</option>
+              <option value="gestor" {% if u.rol == 'gestor' %}selected{% endif %}>Gestor</option>
+              <option value="root" {% if u.rol == 'root' %}selected{% endif %}>Root</option>
+            </select>
+            <button type="submit">Cambiar</button>
+          </form>
+        {% else %}
+          (Tú mismo)
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+
+<a href="panel.php">Atrás</a>
+
+<link rel="stylesheet" href="/css/styles.css">

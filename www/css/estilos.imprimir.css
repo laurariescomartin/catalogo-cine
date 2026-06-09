@@ -1,0 +1,41 @@
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    line-height: 1.6;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 30px;
+    max-width: 120px;
+}
+
+section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 16px;
+}

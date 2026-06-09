@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block buscador %}
+<div class="buscador-login">
+    <input type="text" id="busqueda" placeholder="Buscar películas...">
+    <a href="login.php" class="login-link">Iniciar sesión</a>
+    <div id="resultados" class="sugerencias"></div>
+</div>
+{% endblock %}
+
+
+{% block contenido %}
+<aside class="Enlaces">
+    <h2>Enlaces de interés</h2>
+    <ul>
+        <li><a href="https://www.imdb.com/title/tt0795421/">IMDb Mamma Mia!</a></li>
+        <li><a href="https://es.wikipedia.org/wiki/Mamma_Mia!_(pel%C3%ADcula)">Wikipedia</a></li>
+    </ul>
+</aside>
+
+
+<section class="peliculas">
+    {% for pelicula in peliculas %}
+        <div class="pelicula">
+            <a href="pelicula.php?id={{ pelicula.id }}">
+                <img src="images/{{ pelicula.imagen }}" alt="{{ pelicula.titulo }}">
+                <h3>{{ pelicula.titulo }}</h3>
+            </a>
+        </div>
+    {% endfor %}
+</section>
+
+<script src="js/ajax-busqueda.js"></script>
+{% endblock %}

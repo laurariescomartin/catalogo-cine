@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="/estilos/imprimir.css">
+</head>
+<body>
+	<img src="images/images.png" alt="logo"> 
+    <section>
+        <h2>{{ pelicula.titulo }}</h2>
+        <h4>{{ pelicula.fecha|date("d/m/Y") }}</h4>
+        <h4>{{ pelicula.director }}</h4>
+        <h4>Actores principales:</h4>
+        <ul>
+            {% for actor in pelicula.actores|split(',') %}
+                <li>{{ actor }}</li>
+            {% endfor %}
+        </ul>
+        <p>{{ pelicula.descripcion }}</p>
+    </section>
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% extends "base.html.twig" %}
+
+{% block contenido %}
+<aside class="Enlaces">
+    <h2>Enlaces de interés</h2>
+    <ul>
+        <li><a href="{{ pelicula.enlace_imdb }}">IMDb {{ pelicula.titulo }}</a></li>
+        <li><a href="{{ pelicula.enlace_wiki }}">Wikipedia</a></li>
+    </ul>
+</aside>
+
+<section class="pelicula">
+    <h2>{{ pelicula.titulo }}</h2>
+    <h4>{{ pelicula.fecha }}</h4>
+    <h4>{{ pelicula.director }}</h4>
+
+    <h4>Actores principales:</h4>
+    <ul>
+        {% for actor in pelicula.actores|split(',') %}
+            <li>{{ actor }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>{{ pelicula.descripcion }}</p>
+
+    <section class="fotos">
+    {% for imagen in imagenes %}
+        <div class="foto">
+            <img src="{{ imagen.ruta }}" alt="">
+        </div>
+    {% endfor %}
+    </section>
+
+    <section class="botones">
+        <button class="boton">
+            <img src="images/facebook.png" alt="facebook">
+        </button>
+        <button class="boton">
+            <img src="images/twitter.png" alt="twitter">
+        </button>
+        <button class="boton">
+            <a href="pelicula.imprimir.php?id={{ pelicula.id }}" class="boton-imprimir">
+                <img src="images/images.png" alt="Imprimir ficha">
+            </a>
+        </button>
+    </section>
+    
+    <a href="portada.php">Atrás</a>
+</section>
+
+<section class="comentarios-lateral">
+    <button id="boton-comentarios">
+        Comentarios
+    </button>
+
+    <aside id="panel-comentarios" class="comentarios-ocultos">
+        <h2>Comentarios</h2>
+
+        <!-- Comentarios simulados -->
+        <div class="comentario">
+            <p><strong>Lucía García:</strong> ¡Me encantó esta peli!</p>
+            <small>Fecha: 2025-04-15 10:30</small>
+        </div>
+        <div class="comentario">
+            <p><strong>Carlos Ruiz:</strong> Buen reparto y gran dirección.</p>
+            <small>Fecha: 2025-04-18 19:45</small>
+        </div>
+
+        <!-- Comentarios de BD -->
+        {% for comentario in comentarios %}
+    		<div class="comentario">
+       	 		<p><strong>{{ comentario.nombre_usuario }}:</strong> {{ comentario.comentario }}</p>
+        		<small>Fecha: {{ comentario.fecha }}</small>
+    		</div>
+		{% else %}
+    		<p>No hay comentarios todavía.</p>
+		{% endfor %}
+
+        <!-- Formulario de comentarios -->
+        <form method="POST">
+            <input type="hidden" name="id_pelicula" value="{{ pelicula.id }}">
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <textarea name="comentario" placeholder="Escribe tu comentario..." required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </aside>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const boton = document.getElementById('boton-comentarios');
+        const panel = document.getElementById('panel-comentarios');
+
+        if (boton && panel) {
+            boton.addEventListener('click', function () {
+                panel.classList.toggle('visible');
+            });
+        }
+    });
+</script>
+{% endblock %}

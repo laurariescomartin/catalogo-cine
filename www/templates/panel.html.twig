@@ -1,0 +1,32 @@
+<h2>Bienvenido, {{ nombre }}</h2>
+
+{% if rol == 'normal' %}
+  <h3>Rol: Usuario normal</h3>
+  <p>Puedes comentar películas y editar tu perfil.</p>
+{% elseif rol == 'moderador' %}
+  <h3>Rol: Moderador</h3>
+  <p>Puedes editar y borrar comentarios.</p>
+  <a href="moderar_comentarios.php">Ir al panel de moderación</a>
+{% elseif rol == 'gestor' %}
+  <h3>Rol: Gestor</h3>
+  <p>Gestión disponible:</p>
+  <ul>
+    <li><a href="gestionar_peliculas.php">Gestionar películas</a></li>
+    <li><a href="editar_pelicula.php?id=1">Editar hashtags de una película</a></li>
+  </ul>
+{% elseif rol == 'root' %}
+  <h3>Rol: Administrador (root)</h3>
+  <p>Tienes acceso completo:</p>
+  <ul>
+    <li><a href="gestionar_peliculas.php">Gestionar películas</a></li>
+    <li><a href="moderar_comentarios.php">Gestionar comentarios</a></li>
+    <li><a href="gestionar_usuarios.php">Gestionar usuarios y roles</a></li>
+  </ul>
+{% endif %}
+
+<a href="editarPerfil.php">Editar Perfil</a> |
+<a href="logout.php">Cerrar sesión</a>
+
+<link rel="stylesheet" href="/css/styles.css">
+
+

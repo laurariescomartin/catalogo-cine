@@ -1,0 +1,53 @@
+<h1>Gestión de películas</h1>
+
+<h2>Buscar película</h2>
+<input type="text" id="busqueda" placeholder="Buscar título o descripción">
+<div id="resultados" class="sugerencias"></div>
+
+<a href="nueva_pelicula.php">➕ Añadir nueva película</a>
+
+<table>
+  <tr>
+    <th>Título</th>
+    <th>Estado</th>
+    <th>Acciones</th>
+  </tr>
+  {% for p in peliculas %}
+    <tr>
+      <td>
+        {% if p.imagen %}
+          <img src="/img/peliculas/{{ p.imagen }}" alt="Miniatura" width="60">
+        {% endif %}
+        {{ p.titulo }}
+      </td>
+      
+      <td>
+  		{% if p.publicado %}
+    		<span style="color: green;">✅ Publicada</span>
+    			{% if session.rol == 'gestor' or session.rol == 'root' %}
+      				<a href="cambiar_estado_publicado.php?id={{ p.id }}&estado=1">📤 Despublicar</a>
+   				{% endif %}
+  		{% else %}
+   	 		<span style="color: red;">❌ No publicada</span>
+    			{% if session.rol == 'gestor' or session.rol == 'root' %}
+      				<a href="cambiar_estado_publicado.php?id={{ p.id }}&estado=0">📥 Publicar</a>
+    			{% endif %}
+  		{% endif %}
+		</td>
+
+      <td>
+        {% if session.rol == 'gestor' or session.rol == 'root' %}
+          <a href="editar_pelicula.php?id={{ p.id }}" title="Editar">✏️</a>
+          <a href="borrar_pelicula.php?id={{ p.id }}" onclick="return confirm('¿Eliminar esta película?')" title="Eliminar">🗑️</a>
+        {% else %}
+          No permitido
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+
+<a href="panel.php">Atrás</a>
+
+<link rel="stylesheet" href="/css/styles.css">
+<script src="js/ajax-busqueda.js"></script>

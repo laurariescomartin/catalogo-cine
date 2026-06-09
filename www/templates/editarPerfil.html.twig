@@ -1,0 +1,22 @@
+<h1>Editar Perfil</h1>
+
+{% if exito %}
+    <p style="color:green;">Perfil actualizado correctamente.</p>
+{% elseif error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="post">
+    <label>Nombre:</label><br>
+    <input type="text" name="nombre" value="{{ nombre }}"><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" value="{{ email }}"><br>
+
+    <label>Contraseña nueva (opcional):</label><br>
+    <input type="password" name="password"><br><br>
+
+    <input type="submit" value="Guardar cambios">
+</form>
+
+<link rel="stylesheet" href="/css/styles.css">

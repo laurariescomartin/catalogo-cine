@@ -1,0 +1,26 @@
+<h1>Panel de moderación</h1>
+<table>
+  <tr>
+    <th>Película</th>
+    <th>Usuario</th>
+    <th>Comentario</th>
+    <th>Fecha</th>
+    <th>Acciones</th>
+  </tr>
+  {% for c in comentarios %}
+    <tr>
+      <td>{{ c.idPelicula }}</td>
+      <td>{{ c.nombre_usuario }}</td>
+      <td>{{ c.comentario }}</td>
+      <td>{{ c.fecha }}</td>
+      <td>
+        <a href="editar_comentario.php?id={{ c.id }}">Editar</a> |
+        <a href="borrar_comentario.php?id={{ c.id }}" onclick="return confirm('¿Eliminar?')">Borrar</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+
+<a href="panel.php">Atrás</a>
+
+<link rel="stylesheet" href="/css/styles.css">

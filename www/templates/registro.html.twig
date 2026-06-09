@@ -1,0 +1,30 @@
+<h2>Registro de usuario</h2>
+
+{% if error %}
+  <p style="color:red">{{ error }}</p>
+{% endif %}
+
+{% if exito %}
+  <p style="color:green">
+    ¡Usuario registrado con éxito! <a href="login.php">Inicia sesión</a>
+  </p>
+{% else %}
+  <form method="POST" action="registro.php">
+    <label>Nombre:</label><br>
+    <input type="text" name="nombre" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Contraseña:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <input type="submit" value="Registrarse">
+  </form>
+  
+  <p>
+    ¿Ya tienes una cuenta? <a href="login.php">Inicia sesión aquí</a>
+  </p>
+{% endif %}
+
+<link rel="stylesheet" href="/css/styles.css">

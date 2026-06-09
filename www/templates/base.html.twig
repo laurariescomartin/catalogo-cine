@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+
+    {# Estilo general para pantalla #}
+    <link rel="stylesheet" href="css/estilos.css" media="screen">
+
+    {# Estilo específico para impresión #}
+    <link rel="stylesheet" href="css/estilos.imprimir.css" media="screen">
+
+</head>
+<body>
+    <header>
+        <img src="images/images.png" alt="logo"> 
+        <div class="contenido-header">
+            <h1>Biblioteca Películas</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Menú 1</a></li>
+                    <li><a href="#">Menú 2</a></li>
+                    <li><a href="#">Menú 3</a></li>
+                </ul>
+            </nav>
+            {% block buscador %}{% endblock %}
+        </div>
+    </header>
+
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Descubre, explora y disfruta de las mejores películas. ¡Tu cine favorito está aquí!</p>
+        <p>© 2025 - Laura Riesco Martín</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
