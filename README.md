@@ -1,3 +1,9 @@
+
+
+https://github.com/user-attachments/assets/9d300841-50b1-44b3-b344-81834d78c541
+
+
+
 # Plataforma de Gestión Cinematográfica Modular (UGR)
 
 Este proyecto consiste en una aplicación web dinámica para la gestión, moderación y visualización de un catálogo de cine. Fue desarrollada de forma incremental y evolutiva para la asignatura *Sistemas de Información Basados en Web* durante mi estancia de movilidad SICUE en la Universidad de Granada (Curso 2024-2025).
